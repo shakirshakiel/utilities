@@ -27,7 +27,7 @@ destinations.each do |destination|
   distance = parsed_json["rows"][0]["elements"][0]["distance"]["value"]
   ghash = {"place" => destination, "distance" => distance}
   all_results << ghash
-  result << ghash if(distance < 3000)
+  result << ghash if(distance < 4000)
 end
 
 p "ALL RESULTS"
@@ -35,3 +35,4 @@ p all_results
 
 p "FAVORABLE RESULTS"
 p result
+p result.map {|r| r["place"].split(" ")[0]}.uniq
