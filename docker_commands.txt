@@ -1,0 +1,31 @@
+# Docker Basics
+
+docker login
+docker ps -a | grep ubuntu | cut -d" " -f1 | xargs docker rm
+
+
+# Committing and pushing to docker
+
+docker commit CONTAINER_ID shakirshakiel/ubuntu-test:v1
+docker tag shakirshakiel/ubuntu-test:v1 docker.io/shakirshakiel/ubuntu-test
+docker push docker.io/shakirshakiel/ubuntu-test
+
+# Install netcat in ubuntu
+
+apt-get update
+apt-get upgrade
+apt-get install netcat
+netcat -lc 8080
+
+
+# Connect to database
+
+docker-compose up
+docker network ls
+docker run -it --rm --link dockerrails_db_1 --net dockerrails_default postgres psql -h db -U postgres
+
+
+# Setting & unsetting environment variables
+
+eval $(docker-machine env dev)
+eval $(docker-machine env -u)
